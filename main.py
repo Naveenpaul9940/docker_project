@@ -1,17 +1,22 @@
-import pandas as pd  
-from sklearn.linear_model import LogisticRegression  
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-#loading the dataset 
-data = pd.read_csv("C:\Users\Naveen\Desktop\my_project\dataset\loan_prediction_dataset.csv")
 
-data = data.drop(columns = ['Employment_Status']) 
+data=pd.read_csv("dataset/loan_prediction_dataset.csv")
 
-x = data.drop(columns = ['Loan_Approved'])
-y = data['Loan_Approved']
+data=data.drop(columns=['Employment_Status'])
 
-model = LogisticRegression()
-model.fit(x,y)  
+x=data.drop(columns=['Loan_Approved'])
 
-model_prediction = model.predict(x) 
+y=data['Loan_Approved']
 
-print("accuracy score:", accuracy_score(y, model_prediction))
+model=LogisticRegression()
+
+model.fit(x,y)
+
+prediction=model.predict(x)
+
+print(
+    "accuracy:",
+    accuracy_score(y,prediction)
+)
